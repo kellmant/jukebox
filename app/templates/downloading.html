@@ -1,0 +1,14 @@
+{% extends "layout.html" %} {% block content %}
+
+
+<h1 class="apollo">Time to dance<br>
+ to the Jukebox playing<br><br>"{{ url }}"<br>
+<audio controls autoplay>
+<source src="/static/songs/{{ url }}.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag. How sad, there will be no music in the browser.
+So what's the deal? You listen to records then?
+</audio></h1>
+<br>
+<h2 class="apollo"><a href="/">Shall we dance to another one?</a>
+<h3 class="apollo">Not what you wanted? <br>Want to listen to something else?<br><a href="/">Try again</a> </h3>
+{% endblock %}

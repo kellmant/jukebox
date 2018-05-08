@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class=apollo>About</h2>
+    <h3 class=apollo>
+    <p> Just scrapes songs off the internet for you, nothing you couldn't have clicked on yourself. It doesn't read minds. If you ask for a title that is common or many versions, it usually just spits back the most popular. You may have to provide more information, just try again.</p>
+    <p> It also errors out and times out, and just plain fails. In the event that happens, please try again. There is no need to let me know about the failure because:</p>
+    <p> a) I have logs.</p>
+    <p> b) I don't care.</p>
+    <p> You get what you pay for, and if you pay nothing? Well that is probably because you are the product.</p>
+    <p> The cow doesn't get to complain how the steak gets served, moove along and <a href="/">go dance to some music.</a></p>
+    </h3>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+    -  -  -
+    <h5 class=apollo> 
+	    Shamlessly copied from the hard work MD5HashBrowns did on the 
+	    <a href="https://raw.githubusercontent.com/MD5HashBrowns/apollo-cloud">Apollo Cloud</a>. 
+	    <br>
+	What, you might ask, is Apollo Cloud?
+	<br>
+	<br>
+	Apollo Cloud is a Python Flask powered MP3 downloader webapp, 
+	built off of <a href="https://hub.docker.com/r/craicerjack/apache-flask/">
+		Craicerjack's apache-flask docker image </a>
+	with a sprinkle of <a href="https://rg3.github.io/youtube-dl/">youtube-dl</a> for some awesomeness. One challenge is maintaining 
+	the youtube-dl version as the web site is updated, but with this version the container updates itself on restart. 
+	I run two instances that take turns recycling themselves without even a blip in service.
+    </h5>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+    <h6 class=apollo> 
+	    Working with this code was both inspirational and educational. I used this as the basis of a test app 
+	    that would accept bad input without any validation. I didn't even care if the app worked, 
+	    I was just planning on using it for target practice in my security research.  
+	    To my surprise, it not only works very well getting me music to dance to while we hack away, 
+	    but it turned out to be incredibly reslient to the attacks. 
+	    It inspired me to look closer at the application and sent me down an entirely new way of 
+	    thinking about our infrastructure as dynamic code. It was always there, and apollo cloud helped me 
+	    realize the potential, instead of seeing limits.
+	    <br>
+	    <br>
+    </h6>
+</div>
+{% endblock %}

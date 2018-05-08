@@ -1,0 +1,34 @@
+[Unit]
+Description= %p production instance %i 
+
+[Service]
+EnvironmentFile=/etc/environment
+EnvironmentFile=-/efs/services/environment
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+KillMode=none
+
+ExecStartPre=-/usr/bin/docker kill %p.%i
+ExecStartPre=-/usr/bin/docker rm %p.%i
+ExecStartPre=-/bin/bash -c 'etcdctl set stream "%H | $(date +\"%%a %%r\") | %N service is coming ONLINE "'
+ExecStartPre=-/usr/bin/docker pull registry:5000/%p:latest
+
+ExecStart=/usr/bin/docker run --rm -h %p --name %p.%i -v /efs/media/jukebox:/var/www/apollo-cloud/app/static/songs -e TZ="America/Toronto" -P registry:5000/%p:latest
+ExecStartPost=-/usr/bin/etcdctl set env/app/%p/proto "http"
+ExecStartPost=-/usr/bin/etcdctl set env/app/%p/inc "websockets"
+ExecStartPost=-/usr/bin/etcdctl set env/app/%p/auth "open"
+ExecStartPost=-/usr/bin/etcdctl rm fail/%p/%i
+ExecStartPost=-/bin/bash -c 'sleep 6 ; etcdctl set wtf/%p/%i "%H:$(docker port %p.%i | cut -d : -f 2)"' 
+ExecStartPost=-/bin/bash -c 'etcdctl set ops/net/%p/%i "$(docker port %p.%i | cut -d / -f 1)"' 
+
+
+ExecStop=-/usr/bin/etcdctl rm wtf/%p/%i
+ExecStopPost=-/usr/bin/etcdctl rm ops/net/%p/%i
+ExecStopPost=-/bin/bash -c 'etcdctl set stream "%H | $(date +\"%%a %%r\") | %N service is going OFFLINE "'
+ExecStopPost=-/bin/bash -c 'etcdctl set fail/%p/%i "$(date -u +%%s)"'
+ExecStopPost=-/usr/bin/docker stop %p.%i
+
+[X-Fleet]
+Conflicts=%p@*.service 
+

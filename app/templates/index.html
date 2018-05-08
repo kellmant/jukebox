@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container"> 
+
+ <div style=" width: 70%; margin: 0 auto;">
+        <form method="POST" action="/downloading/">
+	  <div id="formsubmitbutton"> 
+          <input onclick="ButtonClicked()" name="my-form" type="submit" class="btn btn-info" value="Let's Dance" style="float: right;">
+	  </div>
+          <div style="overflow: hidden; padding-right: .5em;">
+          <input name="url" style="width: 100%;" type="text" class="form-control" placeholder="what are you thinking of right now">          
+<link href="https://s3.amazonaws.com/cdn.gwinthesky.net/ico/jukeboxfromhell192.png" rel="icon" sizes="192x192" />
+<link href="https://s3.amazonaws.com/cdn.gwinthesky.net/ico/apple-touch-icon-jukeboxfromhell.png" rel="apple-touch-icon" />
+</div>
+        </form>
+  </div>
+</div>
+</div> <!-- Container close -->
+
+
+<div id="buttonreplacement" style="align:center; width:50%;margin: auto;  display:none;">
+<h3 style="color: #00b8e6; text-align: center;">Returning with request, please stand by. </h3>
+<img class="img-responsive" style="margin: auto; width:140px; padding-top: 5px;" src="{{ url_for('static', filename='loader.gif') }}" alt="loading">
+<h3 style="color: #00b8e6; text-align: center;">Spinning up the jukebox . . . </h3>
+</div>
+<script type="text/javascript">
+/*
+   Replacing Submit Button with 'Loading' Image
+   Version 2.0
+   December 18, 2012
+
+   Will Bontrager Software, LLC
+   http://www.willmaster.com/
+   Copyright 2012 Will Bontrager Software, LLC
+
+   This software is provided "AS IS," without 
+   any warranty of any kind, without even any 
+   implied warranty such as merchantability 
+   or fitness for a particular purpose.
+   Will Bontrager Software, LLC grants 
+   you a royalty free license to use or 
+   modify this software provided this 
+   notice appears on all copies. 
+*/
+function ButtonClicked()
+{
+   document.getElementById("formsubmitbutton").style.display = "none"; // to undisplay
+   document.getElementById("buttonreplacement").style.display = ""; // to display
+   return true;
+}
+var FirstLoading = true;
+function RestoreSubmitButton()
+{
+   if( FirstLoading )
+   {
+      FirstLoading = false;
+      return;
+   }
+   document.getElementById("formsubmitbutton").style.display = ""; // to display
+   document.getElementById("buttonreplacement").style.display = "none"; // to undisplay
+}
+// To disable restoring submit button, disable or delete next line.
+document.onfocus = RestoreSubmitButton;
+</script>
+
+{% endblock %}
