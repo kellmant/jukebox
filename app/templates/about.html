@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}About - Jukebox From Hell{% endblock %}
+
+{% block content %}
+<div class="flex-1 flex items-start justify-center px-4 py-12">
+    <div class="max-w-2xl w-full">
+
+        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl">
+            <div class="flex items-center gap-4 mb-6">
+                <img src="/static/images/devil.gif" alt="" class="w-16 h-auto">
+                <h1 class="font-creepy text-4xl text-hellcyan">About</h1>
+            </div>
+
+            <div class="space-y-4 text-gray-300 leading-relaxed">
+                <p>
+                    Just scrapes songs off the internet for you, nothing you couldn't have
+                    clicked on yourself. It doesn't read minds. If you ask for a title that
+                    is common or many versions, it usually just spits back the most popular.
+                    You may have to provide more information, just try again.
+                </p>
+                <p>
+                    It also errors out and times out, and just plain fails. In the event
+                    that happens, please try again. There is no need to let me know about
+                    the failure because:
+                </p>
+                <ul class="list-none space-y-1 pl-4">
+                    <li class="text-hellcyan">a) I have logs.</li>
+                    <li class="text-hellcyan">b) I don't care.</li>
+                </ul>
+                <p>
+                    You get what you pay for, and if you pay nothing? Well that is probably
+                    because you are the product. The cow doesn't get to complain how the
+                    steak gets served, moove along and
+                    <a href="/" class="text-hellcyan hover:text-hellglow transition-colors underline">
+                        go dance to some music.
+                    </a>
+                </p>
+            </div>
+
+            <hr class="border-white/10 my-8">
+
+            <div class="text-gray-500 text-sm space-y-3">
+                <p>
+                    Shamelessly copied from the hard work MD5HashBrowns did on the
+                    <a href="https://github.com/MD5HashBrowns/apollo-cloud"
+                       class="text-hellcyan hover:text-hellglow transition-colors underline"
+                       target="_blank" rel="noopener">Apollo Cloud</a>.
+                </p>
+                <p>
+                    Apollo Cloud is a Python Flask powered MP3 downloader webapp, built off of
+                    Craicerjack's apache-flask docker image with a sprinkle of
+                    <a href="https://github.com/yt-dlp/yt-dlp"
+                       class="text-hellcyan hover:text-hellglow transition-colors underline"
+                       target="_blank" rel="noopener">yt-dlp</a>
+                    for some awesomeness.
+                </p>
+                <p class="text-gray-600 italic mt-6">
+                    Working with this code was both inspirational and educational. It inspired
+                    me to look closer at the application and sent me down an entirely new way
+                    of thinking about our infrastructure as dynamic code. It was always there,
+                    and apollo cloud helped me realize the potential, instead of seeing limits.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="/dmca" class="text-gray-600 hover:text-gray-400 text-xs transition-colors">DMCA</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

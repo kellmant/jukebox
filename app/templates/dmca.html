@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}DMCA - Jukebox From Hell{% endblock %}
+
+{% block content %}
+<div class="flex-1 flex items-start justify-center px-4 py-12">
+    <div class="max-w-2xl w-full">
+        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl">
+            <h1 class="font-creepy text-4xl text-hellcyan mb-6">DMCA</h1>
+            <div class="text-gray-400 space-y-4 leading-relaxed">
+                <p>
+                    This service does not host, store, or redistribute any music files.
+                    Audio is streamed directly from third-party sources that are publicly
+                    accessible on the internet.
+                </p>
+                <p>
+                    If you believe content accessible through this service infringes your
+                    copyright, please contact the hosting platform directly.
+                </p>
+                <p>
+                    <a href="/" class="text-hellcyan hover:text-hellglow transition-colors underline">
+                        Back to the music.
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

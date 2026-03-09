@@ -1,0 +1,76 @@
+/* Loader animation */
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(0, 184, 230, 0.2);
+    border-top-color: #00b8e6;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Audio player styling */
+audio.audio-player {
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+audio.audio-player::-webkit-media-controls-panel {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Glow pulse for the mascot when playing */
+@keyframes glow-pulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(255, 45, 45, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 40px rgba(255, 107, 53, 0.8));
+    }
+}
+
+.mascot-playing {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Visualizer bars fallback */
+@keyframes bar-bounce {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+}
+
+/* Smooth transitions for state changes */
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Search input glow on focus */
+input[type="text"]:focus {
+    box-shadow: 0 0 20px rgba(0, 184, 230, 0.15);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

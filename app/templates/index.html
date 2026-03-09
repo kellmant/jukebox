@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex-1 flex flex-col items-center justify-center px-4 py-12">
+
+    <!-- Devil mascot -->
+    <img src="/static/images/devil.gif" alt="The Jukebox From Hell"
+         class="w-32 h-auto mb-6 drop-shadow-[0_0_20px_rgba(255,45,45,0.5)]"
+         id="mascot">
+
+    <!-- Title -->
+    <h1 class="font-creepy text-5xl md:text-6xl text-hellcyan mb-2 text-center tracking-wide">
+        Jukebox From Hell
+    </h1>
+    <p class="text-gray-400 mb-10 text-center">What are you thinking of right now?</p>
+
+    <!-- Search -->
+    <form id="search-form" class="w-full max-w-xl">
+        <div class="flex gap-2">
+            <input type="text" id="query" name="query"
+                   placeholder="song, artist, mood, anything..."
+                   autocomplete="off"
+                   required
+                   class="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20
+                          text-white placeholder-gray-500 outline-none
+                          focus:border-hellcyan focus:ring-2 focus:ring-hellcyan/30
+                          transition-all text-lg">
+            <button type="submit" id="search-btn"
+                    class="px-6 py-3 rounded-lg bg-hellcyan text-black font-semibold
+                           hover:bg-hellglow hover:scale-105
+                           active:scale-95 transition-all text-lg whitespace-nowrap">
+                Let's Dance
+            </button>
+        </div>
+    </form>
+
+    <!-- Loading state -->
+    <div id="loading" class="hidden mt-10 text-center">
+        <div class="inline-block">
+            <div class="loader mb-4"></div>
+        </div>
+        <p class="text-hellcyan text-lg font-creepy tracking-wide">Spinning up the jukebox...</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="error" class="hidden mt-8 text-center">
+        <p id="error-msg" class="text-hellred text-lg mb-3"></p>
+        <button onclick="resetPlayer()" class="text-hellcyan hover:text-hellglow transition-colors underline">
+            Try again
+        </button>
+    </div>
+
+    <!-- Player -->
+    <div id="player" class="hidden mt-10 w-full max-w-xl">
+        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl">
+
+            <!-- Track info -->
+            <div class="flex gap-4 mb-5">
+                <img id="player-thumb" src="" alt=""
+                     class="w-20 h-20 rounded-lg object-cover bg-white/10 shrink-0">
+                <div class="min-w-0">
+                    <h2 id="player-title" class="font-creepy text-2xl text-hellcyan truncate"></h2>
+                    <p id="player-artist" class="text-gray-400 truncate"></p>
+                    <p id="player-duration" class="text-gray-600 text-sm mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Audio element -->
+            <audio id="audio" controls autoplay class="w-full mb-4 audio-player"></audio>
+
+            <!-- Visualizer canvas -->
+            <canvas id="visualizer" class="w-full h-16 rounded-lg opacity-80"></canvas>
+
+            <!-- Actions -->
+            <div class="flex justify-center gap-6 mt-4 text-sm">
+                <button onclick="resetPlayer()"
+                        class="text-gray-400 hover:text-hellcyan transition-colors">
+                    Search for another
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/app.js"></script>
+{% endblock %}
